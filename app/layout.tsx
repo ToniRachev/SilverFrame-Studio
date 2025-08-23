@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Roboto } from "next/font/google";
 import "./globals.css";
+import ReactLenis from "lenis/react";
 
 const headingFont = Bebas_Neue({
   variable: "--font-heading",
@@ -29,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${headingFont.variable} ${bodyFont.variable} antialiased`}
       >
-        {children}
+        <ReactLenis root>
+          {children}
+        </ReactLenis>
       </body>
     </html>
   );
