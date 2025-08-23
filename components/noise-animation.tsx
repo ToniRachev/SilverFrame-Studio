@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import { gsap, SteppedEase } from "gsap";
+import { gsap, SteppedEase } from "@/lib/gsap-plugins";
 
 export default function NoiseAnimation() {
     const noiseRef = useRef<HTMLDivElement>(null);
