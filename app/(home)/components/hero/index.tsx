@@ -5,8 +5,8 @@ import NoiseAnimation from "@/components/noise-animation";
 export default function Hero() {
     return (
         <div className="relative h-screen w-full overflow-hidden">
-            <NoiseAnimation />
             <HeroImage />
+            <NoiseAnimation />
             <HeroContent />
         </div>
     )
