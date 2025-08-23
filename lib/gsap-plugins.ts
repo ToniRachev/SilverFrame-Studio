@@ -1,8 +1,8 @@
 'use client';
 
-import { gsap } from "gsap";
+import { gsap, SteppedEase } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export { gsap };
+export { gsap, SteppedEase, ScrollTrigger };
