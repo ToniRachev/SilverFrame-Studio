@@ -1,13 +1,17 @@
-import ParallaxImage from "@/components/parallax-image";
+import SectionContainer from "@/components/section-container";
+import AboutParallaxImages from "./components/about-parallax-images";
+import AboutContent from "./components/about-content";
 
 export default function About() {
     return (
-        <div className="min-h-[200vh]">
-            <ParallaxImage
-                image="/home/about/about-center.jpg"
-                alt="About"
-                className="w-[30vw] h-[50vh]"
-            />
-        </div>
+        <SectionContainer className="h-[100vh] w-full flex">
+            <div className="w-full flex-1/2">
+                <AboutParallaxImages />
+            </div>
+
+            <div className="w-full flex-1/2">
+                <AboutContent />
+            </div>
+        </SectionContainer>
     )
 }

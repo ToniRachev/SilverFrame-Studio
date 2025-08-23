@@ -1,13 +1,10 @@
 'use client';
 
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from "@/lib/gsap-plugins";
 
 interface ParallaxImageProps {
     image: string;
@@ -18,9 +15,9 @@ interface ParallaxImageProps {
 }
 
 const parallaxValues = {
-    small: '10%',
-    medium: '20%',
-    large: '30%',
+    small: '3%',
+    medium: '10%',
+    large: '25%',
 }
 
 export default function ParallaxImage({ image, alt, className, motionRange = 'small', reverse = false }: Readonly<ParallaxImageProps>) {
@@ -34,7 +31,7 @@ export default function ParallaxImage({ image, alt, className, motionRange = 'sm
         }, {
             y: reverse ? parallaxValues[motionRange] : `-${parallaxValues[motionRange]}`,
             ease: 'none',
-            duration: 1,
+            duration: 2,
             scrollTrigger: {
                 trigger: container.current,
                 start: 'top bottom',
