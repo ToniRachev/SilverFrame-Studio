@@ -15,9 +15,9 @@ interface ParallaxImageProps {
 }
 
 const parallaxValues = {
-    small: '3%',
-    medium: '10%',
-    large: '25%',
+    small: '1vh',
+    medium: '5vh',
+    large: '10vh',
 }
 
 export default function ParallaxImage({ image, alt, className, motionRange = 'small', reverse = false }: Readonly<ParallaxImageProps>) {
@@ -31,7 +31,7 @@ export default function ParallaxImage({ image, alt, className, motionRange = 'sm
         }, {
             y: reverse ? parallaxValues[motionRange] : `-${parallaxValues[motionRange]}`,
             ease: 'none',
-            duration: 2,
+            duration: 1,
             scrollTrigger: {
                 trigger: container.current,
                 start: 'top bottom',
