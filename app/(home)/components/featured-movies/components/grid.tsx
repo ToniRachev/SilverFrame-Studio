@@ -37,6 +37,7 @@ const indexToSkip = [1, 5, 7, 9, 12, 18, 21]
 export default function Grid() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const gridWrappersRef = useRef<HTMLDivElement[]>([]);
+    const gridRef = useRef<HTMLDivElement>(null);
     const captionWrapper = useRef<HTMLDivElement>(null);
 
     const setGridWrappersRefs = (el: HTMLDivElement, index: number) => {
@@ -59,6 +60,9 @@ export default function Grid() {
                 stagger: 0.07,
                 y: () => gsap.utils.random(window.innerHeight, window.innerHeight * 1.8),
             })
+            .to(gridRef.current, {
+                opacity: 0,
+            })
             .from(captionWrapper.current, {
                 opacity: 0,
                 y: 100,
@@ -68,7 +72,7 @@ export default function Grid() {
     return (
         <div ref={sectionRef} className="w-full h-[300vh] relative">
             <div className="w-full h-[100vh] sticky top-0">
-                <div className="grid grid-cols-8 gap-1 relative">
+                <div ref={gridRef} className="grid grid-cols-8 gap-1 relative">
                     {movies.map((movie, index) => {
                         if (indexToSkip.includes(index)) {
                             return (
