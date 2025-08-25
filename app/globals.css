@@ -80,6 +80,10 @@ p {
   margin-bottom: 1rem;
 }
 
+li {
+  list-style: none;
+}
+
 /* Additional responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   body {
