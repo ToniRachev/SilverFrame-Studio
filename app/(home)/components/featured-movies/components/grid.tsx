@@ -1,9 +1,10 @@
 'use client';
 
 import { useRef } from "react";
-import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap-plugins";
+import GridItem from "./grid-item";
+import FeaturedMoviesCaption from "./featured-movies-caption";
 
 const movies = [
     '/home/featured-movies/barren-desert.png',
@@ -32,7 +33,6 @@ const movies = [
     '/home/featured-movies/paradise.png',
 ]
 
-const indexToSkip = [1, 5, 7, 9, 12, 18, 21]
 
 export default function Grid() {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -74,26 +74,18 @@ export default function Grid() {
             <div className="w-full h-[100vh] sticky top-0">
                 <div ref={gridRef} className="grid grid-cols-8 gap-1 relative">
                     {movies.map((movie, index) => {
-                        if (indexToSkip.includes(index)) {
-                            return (
-                                <div key={index} className="w-full h-[calc(100vh/3)]" />
-                            )
-                        }
-
                         return (
-                            <div key={index} className="w-full h-full" ref={el => setGridWrappersRefs(el!, index)}>
-                                <Image src={movie} alt="movie" width={400} height={500} className="w-full h-[calc(100vh/3)] object-cover" />
-                            </div>
+                            <GridItem
+                                key={`${movie}-${index}`}
+                                index={index}
+                                imageUrl={movie}
+                                setGridWrappersRefs={setGridWrappersRefs}
+                            />
                         )
                     })}
-
-                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-5" />
                 </div>
 
-                <div ref={captionWrapper} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col">
-                    <h1 className="m-0 p-0 leading-none">A Selection of Our Stories</h1>
-                    <p className="text-right">Crafted with passion to inspire audiences</p>
-                </div>
+                <FeaturedMoviesCaption captionWrapper={captionWrapper} />
             </div>
         </div>
     )
