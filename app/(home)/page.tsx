@@ -5,10 +5,13 @@ import StudioSpotlight from "./components/studio-spotlight";
 import Services from "./components/services";
 import Directors from "./components/directors";
 import Awards from "./components/awards";
+import Contact from "./components/contact";
 
 export default function Home() {
   return (
-    <div className="space-y-20">
+    <div
+      className="space-y-20"
+    >
       <Hero />
       <About />
       <FeaturedMovies />
@@ -16,7 +19,7 @@ export default function Home() {
       <Services />
       <Directors />
       <Awards />
-      <div className="h-[100vh]"/>
+      <Contact />
     </div>
   );
 }
