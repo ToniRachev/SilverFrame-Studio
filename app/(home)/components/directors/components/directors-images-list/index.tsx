@@ -57,7 +57,7 @@ export default function DirectorsImagesList({ directors, activeDirectorIndex, ac
             </ul>
             <div className="director-name w-full flex flex-col items-end justify-center pt-4">
                 <h3 className="!leading-none">{splitName[0]}</h3>
-                <h3 className="text-[#FF7373] !leading-none">{splitName[1]}</h3>
+                <h3 className="text-decor !leading-none">{splitName[1]}</h3>
             </div>
         </div>
     )
