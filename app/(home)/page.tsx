@@ -5,7 +5,7 @@ import StudioSpotlight from "./components/studio-spotlight";
 import Services from "./components/services";
 import Directors from "./components/directors";
 import Awards from "./components/awards";
-import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <Services />
       <Directors />
       <Awards />
-      <Contact />
+      <Footer />
     </div>
   );
 }
