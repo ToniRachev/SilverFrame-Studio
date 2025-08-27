@@ -14,7 +14,7 @@ export default function AwardsList({ awards, setActiveAward, activeAward }: Read
                 <li
                     key={award.category}
                     onMouseEnter={() => setActiveAward(award)}
-                    className="relative"
+                    className="relative cursor-pointer"
                 >
                     <p className="font-bold uppercase">({award.category})</p>
                     <p>{award.festival}</p>

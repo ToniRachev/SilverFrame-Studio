@@ -4,6 +4,8 @@ import { useRef } from "react";
 
 import { DirectorInterface } from "../../lib/types";
 import clsx from "clsx";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface DirectorWorkProps {
     director: DirectorInterface;
@@ -21,7 +23,20 @@ export default function DirectorWork(
         activeHoveredWorkIndex,
         setHoveredWorkIndex
     }: Readonly<DirectorWorkProps>) {
+    const isActive = activeHoveredWorkIndex !== null && activeHoveredWorkIndex === index;
+    const isHovered = activeHoveredWorkIndex !== null;
+
     const videoRef = useRef<HTMLVideoElement>(null);
+    const viewWorkRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        gsap.to(viewWorkRef.current, {
+            opacity: isActive ? 1 : 0,
+            filter: isActive ? 'blur(0px)' : 'blur(10px)',
+            duration: 0.5,
+            ease: 'power2.inOut',
+        })
+    }, [isActive])
 
     const handlePlay = () => {
         if (videoRef.current) {
@@ -42,15 +57,18 @@ export default function DirectorWork(
         setSelectedDirector();
     }
 
-    const isActive = activeHoveredWorkIndex !== null && activeHoveredWorkIndex === index;
-    const isHovered = activeHoveredWorkIndex !== null;
-
     return (
         <li
             onMouseEnter={handleMouseEnter} onMouseLeave={handlePause}
-            className={clsx('transition-opacity duration-300 ease-in-out', isActive ? 'opacity-100' : 'opacity-50', !isHovered && 'opacity-100')}
+            className={clsx('transition-opacity duration-300 ease-in-out cursor-pointer', isActive ? 'opacity-100' : 'opacity-50', !isHovered && 'opacity-100')}
         >
-            <video ref={videoRef} src={director.workVideoUrl} muted loop className="object-cover" />
+            <div className="relative">
+                <video ref={videoRef} src={director.workVideoUrl} muted loop className="object-cover" />
+
+                <div ref={viewWorkRef} className="absolute bottom-0 left-4 opacity-0">
+                    <h5>View work</h5>
+                </div>
+            </div>
             <p>{director.name}</p>
         </li>
     )
