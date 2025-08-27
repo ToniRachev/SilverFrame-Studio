@@ -17,8 +17,6 @@ export default function CursorImageFollower({ imageUrl, exiting, initialMousePos
     const mouse = useMouse();
 
     useGSAP(() => {
-        if (!containerRef.current || exiting) return;
-
         if (mouse) {
             gsap.set(containerRef.current, {
                 x: mouse.x,
@@ -34,8 +32,17 @@ export default function CursorImageFollower({ imageUrl, exiting, initialMousePos
                 yPercent: -50,
             })
         }
+    }, [])
 
+    useGSAP(() => {
+        if (exiting) return;
 
+        gsap.to(containerRef.current, {
+            x: mouse?.x ?? 0,
+            y: mouse?.y ?? 0,
+            ease: 'back.out(1.2)',
+            duration: 0.6,
+        })
     }, [mouse, exiting])
 
     useGSAP(() => {
@@ -72,7 +79,7 @@ export default function CursorImageFollower({ imageUrl, exiting, initialMousePos
     return (
         <div
             ref={containerRef}
-            className={clsx('fixed inset-0 w-[30vw] h-[40vh] pointer-events-none user-select-none z-10', !exiting && 'cursor-follower')}
+            className={clsx('fixed inset-0 w-[30vw] h-[40vh] pointer-events-none select-none z-10')}
         >
             <Image src={imageUrl} alt="mouse follower" fill className="object-cover" />
         </div>
