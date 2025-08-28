@@ -51,8 +51,8 @@ export default function Grid() {
             },
             scrollTrigger: {
                 trigger: sectionRef.current,
-                start: 'top bottom',
-                end: '+=250%',
+                start: 'top center',
+                end: 'bottom bottom',
                 scrub: 1.5,
             }
         })
@@ -60,7 +60,7 @@ export default function Grid() {
                 stagger: 0.07,
                 y: () => gsap.utils.random(window.innerHeight, window.innerHeight * 1.8),
             })
-            .to(gridRef.current, {
+            .to(sectionRef.current, {
                 opacity: 0,
             })
             .from(captionWrapper.current, {
