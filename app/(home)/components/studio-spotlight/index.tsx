@@ -51,7 +51,7 @@ export default function StudioSpotlight() {
 
     return (
         <div className="mt-[-200vh]">
-            <div ref={sectionRef} className="w-full h-[300vh] ">
+            <div ref={sectionRef} className="w-full h-[300vh] overflow-hidden">
                 <div className="w-full h-[100vh] relative">
                     <div
                         ref={imageWrapperRef}
@@ -67,7 +67,7 @@ export default function StudioSpotlight() {
                         <div className="w-[100svw] h-[100svh] relative overflow-hidden">
                             <Image ref={imageRef} src="/home/featured-movies/spotlight.jpg" alt="movie" fill className="object-cover object-center scale-125" />
 
-                            <div ref={captionRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-prose text-center">
+                            <div ref={captionRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-prose text-center select-none pointer-events-none">
                                 <h1>We Bring Stories Worth Sharing</h1>
                             </div>
                         </div>
