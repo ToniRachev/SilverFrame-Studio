@@ -31,12 +31,15 @@ export default function StudioSpotlight() {
             }
         })
             .to(imageWrapperRef.current, {
+                opacity: 1,
+                duration: 2,
+            }, '1')
+            .to(imageWrapperRef.current, {
                 maskSize: '400%',
                 webkitMaskSize: '400%',
                 duration: 3,
                 ease: 'power2.inOut',
             }, '1')
-
             .to(imageRef.current, {
                 scale: 1,
                 duration: 3.5
@@ -55,7 +58,7 @@ export default function StudioSpotlight() {
                 <div className="w-full h-[100vh] relative">
                     <div
                         ref={imageWrapperRef}
-                        className="absolute top-0 left-0 w-[100svw] h-[100vh] overflow-hidden z-10"
+                        className="absolute top-0 left-0 w-[100svw] h-[100vh] overflow-hidden z-10 opacity-0"
                         style={{
                             WebkitMask: `url('/spotlight-mask.svg') no-repeat center center / contain`,
                             mask: `url('/spotlight-mask.svg') no-repeat center center / contain`,
