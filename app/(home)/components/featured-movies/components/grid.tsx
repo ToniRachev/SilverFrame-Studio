@@ -51,7 +51,7 @@ export default function Grid() {
             },
             scrollTrigger: {
                 trigger: sectionRef.current,
-                start: 'top center',
+                start: 'top center+=40%',
                 end: 'bottom bottom',
                 scrub: 1.5,
             }
