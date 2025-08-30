@@ -101,33 +101,31 @@ export default function Preloader() {
 
     useEffect(() => {
         if (loading) {
-            document.body.style.overflow = 'hidden';
             lenis?.scrollTo(0, { immediate: true });
             lenis?.stop();
         } else {
-            document.body.style.overflow = 'auto';
             lenis?.start();
         }
     }, [loading, lenis])
 
-    if (loading) {
-        return (
-            <div ref={preloaderRef} className=" fixed top-0 left-0 w-[100svw] h-[100svh] bg-stone-200 overflow-hidden flex items-center">
 
-                <div className="absolute w-full h-full  flex items-center justify-center">
-                    {movieStages.map((stage, index) => (
-                        <div key={stage} ref={(ref) => setStagesRef(index, ref)} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black opacity-0">
-                            <h1 className="!text-[8em]">{stage}</h1>
-                        </div>
-                    ))}
-                </div>
+    if (!loading) return null;
 
-                <div ref={loaderRef} className="w-0 h-[8vh] bg-black flex justify-between items-center gap-4 overflow-hidden z-100">
-                    <h5 className="text-loader px-2">SilverFrame</h5>
-                    <h5 className="text-loader px-2">Studios</h5>
-                </div>
+    return (
+        <div ref={preloaderRef} className="fixed top-0 left-0 w-full max-w-[100svw] h-[100svh] bg-stone-200 flex items-center">
+
+            <div className="absolute w-full h-full  flex items-center justify-center">
+                {movieStages.map((stage, index) => (
+                    <div key={stage} ref={(ref) => setStagesRef(index, ref)} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black opacity-0">
+                        <h1 className="!text-[8em]">{stage}</h1>
+                    </div>
+                ))}
             </div>
-        )
-    }
-    return null;
+
+            <div ref={loaderRef} className="w-0 h-[8vh] bg-black flex justify-between items-center gap-4 overflow-hidden z-100">
+                <h5 className="text-loader px-2">SilverFrame</h5>
+                <h5 className="text-loader px-2">Studios</h5>
+            </div>
+        </div>
+    )
 }
