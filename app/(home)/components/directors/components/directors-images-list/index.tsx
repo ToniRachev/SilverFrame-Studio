@@ -43,7 +43,7 @@ export default function DirectorsImagesList({ directors, activeDirectorIndex, ac
             filter: 'blur(10px)',
         }, {
             filter: 'blur(0px)',
-            duration: 0.3,
+            duration: 0.5,
             ease: 'power2.inOut',
         })
     }, [activeDirectorIndex])
